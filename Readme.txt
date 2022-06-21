@@ -1,5 +1,12 @@
 **Tianzhu Li Bio Website**
 
+Final:
+After week1's html build and week2's css build. Further features were added and polished:
+-In total of six pages that are carefully considered.
+-Used media quaries to fit different sizes of windows.
+-Used JS to achieve auto gallery, pic and resume viewer.
+-Used Vue to create comment sections and to do list.
+
 Week 2：
 
 A much rougher journey for week 2. As for a zero experienced person, there is a steep learning curve for using CSS.
