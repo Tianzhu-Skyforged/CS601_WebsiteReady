@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/Template.css">
+    <link rel="stylesheet" href="/css/resume.css">
+    <title>Tianzhu_Aboutme</title>
+</head>
+
+
+<body>
+    <div class="wrapper">
+        <header class="main-head">Tianzhu's World</header>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/P2_Hometown.html">Hometown</a></li>
+                <li><a href="/P3_Life_in_BC.html">Life_in_BC</a></li>
+                <li><a href="/P4_Movies.html">Movies</a></li>
+                <li><a href="/P5_Hobby.html">Hobby</a></li>
+                <li><a href="/P6_About_me.html">About me</a></li>
+            </ul>
+        </nav>
+    <main class="content">
+        <h1>Mini Biogrophy</h1>
+    
+        <div class="pics">
+            <img src="https://www.commonapp.org/static/00659bbf68886ed7bcc1780bb9f68ede/boston-university_38.jpg" alt="Boston_Uni" width="1230" height="500">
+        </div>
+        
+        <p>Hello, my name is Tianzhu Li and I am currently a MSCS student at Boston University. It has been a great experience since the beginning of the
+            curriculum. I studied in Canada before and graduated as a electrical engineer. I really enjoy the stuff I learned in electrical engineering, 
+            and the discipline in electrical engineering is boarder than I think. Thus I wanted to build more knowledge on the software side and combine with 
+            the hardware to design and build something cool in the future.
+        </p>
+
+        <p>
+            I grew up in China and went aboard to study after my high school.
+            I have worked in different places as a coop student. I studied an worked in Belgium for a semester and that is 
+            the coolest thing ever which really motivates me to explore more. I enjoying traveling, playing video games, playing the guitar and there could be more hobbies
+            been discovered in the future.
+        </p>
+        
+        <p>Feel free to reach out to me if you are interested in either school life at BU, the courses or other interesting topics in general.(If you are a 
+            gamer, add me on Steam!&#128512;)
+        
+
+    </main>
+
+    <aside class="side">
+        <h3>My resume:(Click to zoom!)</h3>
+        <img id="myImg" src="/image/Tianzhu_Resume_2022_2.png" alt="resume" class="resume">
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+            <div id="caption"></div>
+        </div>
+        
+    </aside>
+
+    <div class="ad">
+        <p>
+            All my links:
+        </p>
+
+        <a href="https://steamcommunity.com/profiles/76561198103502478">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" alt="steam icon" style="width:42px;height:42px;">
+        </a>
+
+        <a href="https://in.linkedin.com/in/tianzhu-li-0881a2128">
+            <img src="https://freepngimg.com/thumb/linkedin/6-2-linkedin-transparent.png" alt="linkedin icon" style="width:42px;height:42px;">
+        </a>
+
+    </div>
+
+    <footer class="main-footer">
+        <p>    Copyright &copy; 2022 Tianzhu Li. All Rights Reserved.</p>
+    </footer>
+    </div>
+
+        <!-- For resume -->
+        <script>
+            // Get the modal
+            var modal = document.getElementById("myModal");
+            
+            // Get the image and insert it inside the modal - use its "alt" text as a caption
+            var img = document.getElementById("myImg");
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            img.onclick = function(){
+              modal.style.display = "block";
+              modalImg.src = this.src;
+              captionText.innerHTML = this.alt;
+            }
+            
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() { 
+              modal.style.display = "none";
+            }
+            </script>
+</body>
+
+</html>

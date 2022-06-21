@@ -1,0 +1,99 @@
+<!-- Test file, not in use -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex"></script>
+    <link rel="stylesheet" href="/Week2/css/Template.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="todo">
+        <div style="width: 60%;margin: 0 auto;">
+            <input type="text" v-model="ipt"/>
+            <button type="button" :disabled="isListEmpty"  @click="addList">Add</button>
+            <h3>To do:</h3>
+            <ul>
+                <li v-for="(item,index) in list" :key='index' v-if="!item.isok">
+                    <input type="checkbox" v-model="item.isok" @click="edit"/>
+                    {{item.text}}
+                    <button type="button" @click="delList(index)">Delete</button>
+                </li>
+            </ul>
+            <h3>Done:</h3>
+            <ul style="opacity: 0.5;">
+                <li v-for="(item,index) in list" :key='index' v-if="item.isok">
+                    <input type="checkbox" v-model="item.isok" @click="edit"/>
+                    {{item.text}}
+                    <button type="button" @click="delList(index)">Delete</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el:'#todo',
+            data:{
+                // geting the input
+                ipt:'',
+                // list of contents
+                list:[
+                    // {text:'Bring umbrella',isok:true},
+                    // {text:'Go shopping',isok:true},
+                    // {text:'Byt a book',isok:false},
+                    // {text:'Exercise at 3pm',isok:false},
+                ]
+                
+            },
+
+            methods:{
+                addList(){
+                    //Getting input from the box ipt
+                    var text = this.ipt;
+                    console.log(text);
+                    //add ipt content to the list	unshift:add to the head
+                    this.list.unshift({text:text,isok:false});
+                    //清空input内容
+                    this.ipt = '';
+                    // 设置localStorage,以键值对的形式进行缓存
+                    // localStorage.setItem('a','789');
+                    localStorage.setItem('arr',JSON.stringify(this.list));	//JSON.stringify() 将json对象转换为字符串
+                },
+                delList(index){
+                    //获取数组下标
+                    // console.log(index);
+                    // 给个提示框 是否删除 是则删除 	反之
+                    var isDel = window.confirm('Are you sure you want to delete this task?');
+                    if(isDel){
+                        // 在list数组中查找第index个数据并删除
+                        // splice删除数组中的数据 两个参数：要删除的起始位置  删除几个
+                        this.list.splice(index,1);
+                        localStorage.setItem('arr',JSON.stringify(this.list));
+                    }
+                },
+                edit(){
+                    var this_ = this;
+                    setTimeout(()=>{
+                        localStorage.setItem('arr',JSON.stringify(this_.list));
+                    })
+                }
+            },
+            // vue声明周期 当页面创建完成之后自动执行
+            created(){
+                console.log('页面创建完成');
+                // localStorage.getItem	获取本地缓存
+                var slist = localStorage.getItem('arr');
+                if(slist == null){
+                    this.list = [];
+                }else{
+                    this.list = JSON.parse(slist);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

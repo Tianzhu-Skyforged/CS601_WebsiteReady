@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="/css/Template.css">
+    <title>Tianzhu_Hobby</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="main-head">Tianzhu's World</header>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/P2_Hometown.html">Hometown</a></li>
+                <li><a href="/P3_Life_in_BC.html">Life_in_BC</a></li>
+                <li><a href="/P4_Movies.html">Movies</a></li>
+                <li><a href="/P5_Hobby.html">Hobby</a></li>
+                <li><a href="/P6_About_me.html">About me</a></li>
+            </ul>
+        </nav>
+    <main class="content">
+        <h1>Hobbies</h1>
+        
+        <p>
+            Everyone has their own hobbies, for me it is difficult to say if there is anything I am super enthusiastic about. However, there are something I enjoy doing in my spare time.
+        </p>
+
+        <ul>
+            <li>Go to the cinema</li>
+            <li>Listen to music</li>
+            <li>Play the guitar(Still a newbie)</li>
+            <li>Play video games</li>
+            <li>Traveling!(if time and wallet allows)</li>
+          </ul>  
+
+          <p>
+            Besides the things I mentioned above， recently I discovered something new, indoor rock climbing. I joined an indoor climbing class in the spring semester at BU,
+            and it is quite fun when climbed together with classmates. The instructor informed me that there are several indoor rock climbing gyms around Boston. Thus, I did 
+            some research and summurized here for future reference.
+        </p>
+
+        <div class="pics">
+            <img src="https://media.timeout.com/images/105173460/1024/576/image.jpg" alt="In door Climbing" width="910" height="550" class="center">
+        </div>
+        
+        
+        <table class="gym">
+            <tr>
+              <td>Name</td>
+              <td>Location</td>
+              <td>Phone Num</td>
+            </tr>
+            <tr>
+              <td>Brooklyn Boulders</td>
+              <td>12A Tyler St. Somerville</td>
+              <td>(617) 623-6700</td>
+            </tr>
+            <tr>
+                <td>MetroRock Climbing Center</td>
+                <td>69 Norman St., Suite 9 Everett</td>
+                <td>(617) 387-7625</td>
+            </tr>
+            <tr>
+                <td>Central Rock Gym</td>
+                <td>74 Acton St. Watertown</td>
+                <td>(617) 744-0081</td>
+            </tr>
+            <tr>
+                <td>Rock Spot Climbing</td>
+                <td>30 Old Colony Ave. Boston</td>
+                <td>(617) 269-2084</td>
+            </tr>
+        </table>
+        
+
+    </main>
+
+    <aside class="side">
+        <h2><span class="tab"></span>Gadget: <span class="tabs"></span>To Do List <br></h2>
+        <div id="todo">
+            <div style="width: 60%;margin: 0 auto;">
+                <input type="text" size="24" v-model="ipt"/>
+                <button type="button"  @click="addList">Add</button>
+                <h3>To do:</h3>
+                <ul>
+                    <li v-for="(item,index) in list" :key='index' v-if="!item.isok">
+                        <input type="checkbox" v-model="item.isok" @click="edit"/>
+                        {{item.text}}
+                        <button type="button" @click="delList(index)">Delete</button>
+                    </li>
+                </ul>
+                <h3>Done:</h3>
+                <ul style="opacity: 0.5;">
+                    <li v-for="(item,index) in list" :key='index' v-if="item.isok">
+                        <input type="checkbox" v-model="item.isok" @click="edit"/>
+                        {{item.text}}
+                        <button type="button" @click="delList(index)">Delete</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+
+    <div class="ad">
+        <p>
+            All my links:
+        </p>
+
+        <a href="https://steamcommunity.com/profiles/76561198103502478">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" alt="steam icon" style="width:42px;height:42px;">
+        </a>
+
+        <a href="https://in.linkedin.com/in/tianzhu-li-0881a2128">
+            <img src="https://freepngimg.com/thumb/linkedin/6-2-linkedin-transparent.png" alt="linkedin icon" style="width:42px;height:42px;">
+        </a>
+
+    </div>
+
+    <footer class="main-footer">
+        <p>    Copyright &copy; 2022 Tianzhu Li. All Rights Reserved.</p>
+    </footer>
+    </div>
+
+    <script type="text/javascript">
+        var vm = new Vue({
+            el:'#todo',
+            data:{
+                // geting the input
+                ipt:'',
+                // list of contents
+                list:[
+                    // {text:'Bring umbrella',isok:true},
+                    // {text:'Go shopping',isok:true},
+                    // {text:'Byt a book',isok:false},
+                    // {text:'Exercise at 3pm',isok:false},
+                ]
+                
+            },
+
+            methods:{
+                addList(){
+                    //Getting input from the box ipt
+                    var text = this.ipt;
+                    console.log(text);
+                    //add ipt content to the list	unshift:add to the head
+                    this.list.unshift({text:text,isok:false});
+                    //Clear out input
+                    this.ipt = '';
+                    // Set up localStorage, key-value pair buffer
+                    // localStorage.setItem('a','789');
+                    localStorage.setItem('arr',JSON.stringify(this.list));	//JSON.stringify() !!json object-> String!!
+                },
+                delList(index){
+                    //get index
+                    // console.log(index);
+                    // pop window delete or not??? 
+                    var isDel = window.confirm('Are you sure you want to delete this task?');
+                    if(isDel){
+                        // find index number of data in the list array then delete it
+                        // -splice- delete data in the list- two par：delete from what index,  delete how many
+                        this.list.splice(index,1);
+                        localStorage.setItem('arr',JSON.stringify(this.list));
+                    }
+                },
+                edit(){
+                    var this_ = this;
+                    setTimeout(()=>{
+                        localStorage.setItem('arr',JSON.stringify(this_.list));
+                    })
+                }
+            },
+            // created vue will initiate after page is set up 
+            created(){
+                console.log('page set up!');
+                // localStorage.getItem	get local buffer
+                var slist = localStorage.getItem('arr');
+                if(slist == null){
+                    this.list = [];
+                }else{
+                    this.list = JSON.parse(slist);
+                }
+            }
+        })
+    </script>
+
+
+</body>
+</html>

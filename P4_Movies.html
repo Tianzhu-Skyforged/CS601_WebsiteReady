@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/Template.css">
+    <link rel="stylesheet" href="/css/slider.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Tianzhu_Movies</title>
+
+    <style>
+    .commentBox {
+        width: 80%;
+        height: 100px;
+        padding: 10px;
+        background-color: #d0e2bc;
+      }
+
+      #comment{
+        display:grid;
+        position: relative;
+      }
+
+      
+    </style>
+</head>
+<body>
+
+
+
+    <div class="wrapper">
+        <header class="main-head">Tianzhu's World</header>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/P2_Hometown.html">Hometown</a></li>
+                <li><a href="/P3_Life_in_BC.html">Life_in_BC</a></li>
+                <li><a href="/P4_Movies.html">Movies</a></li>
+                <li><a href="/P5_Hobby.html">Hobby</a></li>
+                <li><a href="/P6_About_me.html">About me</a></li>
+            </ul>
+        </nav>
+    <main class="content">
+        <h1>Movies, yes, who doesn't like movies?</h1>
+        <p>
+            Watching a movie can be done at any time. Whether you go to cinema or watch it at home, watch it alone or with others, it is always a great escape from our stressful world. A movie 
+            can make you happy, in tears, or excited, but what's more? It lets you learn something that you may not have experienced. Here are some of my loved movies, what movie do you like?
+        </p>
+                    
+                    <section class="auto-slider">
+                        
+                        <div id="slider">
+                            <figure>
+                                <img src="https://www.moviehdwallpapers.com/wp-content/uploads/2013/02/Inception.jpg" alt="Image">
+                                <img src="https://www.filmfutter.com/wp-content/uploads/2014/06/ForrestGumpRerelease-696x392.jpg" alt="Image">
+                                <img src="https://www.teahub.io/photos/full/342-3427038_pulp-fiction.jpg" alt="Image">
+                                <img src="https://cps-static.rovicorp.com/2/Open/Miramax_2277/Program/3053281/_derived_jpg_q90_584x800_m0/FarewellMyConcubin_PA3.jpg" alt="Image">
+                                <img src="https://m.media-amazon.com/images/I/71F5c+k4TxL._SX425_.jpg" alt="Image">
+                            </figure>
+                            <div class="indicator"></div>
+                        </div>
+                    </section>
+
+                    <div id="comment">
+                        <div style="width: 60%;margin: 0 auto;">
+                            <h2>Leave your comments here:</h2>
+                            <textarea class="commentBox" id="text" cols="30" rows="10" placeholder="Feel free to share your opinions"  v-model="ipt"></textarea>
+                            <button type="button"  @click="addList">Submit</button>
+                            <h3>Comment:</h3>
+                            <ul>
+                                <li class= "clist" v-for="(item,index) in list" :key='index'>      
+                                    {{item.text}}
+                                    <button type="button" @click="delList(index)">Delete</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                
+               
+    </main>
+
+    <aside class="side">
+        <div class="pics">
+            <img src="https://upload.wikimedia.org/wikipedia/en/5/54/Avatar_The_Way_of_Water_poster.jpg" alt="Avatar2" height="70%" width="100%">
+        </div>
+
+        <p>
+            Yes, Avatar2! Looking forward to watch it this year, what a long wait Cameron.
+        </p>
+    </aside>
+
+    <div class="ad">
+        <p>
+            All my links:
+        </p>
+
+        <a href="https://steamcommunity.com/profiles/76561198103502478">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" alt="steam icon" style="width:42px;height:42px;">
+        </a>
+
+        <a href="https://in.linkedin.com/in/tianzhu-li-0881a2128">
+            <img src="https://freepngimg.com/thumb/linkedin/6-2-linkedin-transparent.png" alt="linkedin icon" style="width:42px;height:42px;">
+        </a>
+
+    </div>
+
+    <footer class="main-footer">
+        <p>    Copyright &copy; 2022 Tianzhu Li. All Rights Reserved.</p>
+    </footer>
+
+    </div>
+    
+    <script type="text/javascript">
+        var vm = new Vue({
+            el:'#comment',
+            data:{
+                // geting the input
+                ipt:'',
+                // list of contents
+                list:[
+                    // {text:'I like this movie'},
+                ]
+                
+            },
+
+            methods:{
+                addList(){
+                    //Getting input from the box ipt
+                    var text = this.ipt;
+                    console.log(text);
+                    //add ipt content to the list	unshift:add to the head
+                    this.list.unshift({text:text});
+                    //Clear out input
+                    this.ipt = '';
+                    // Set up localStorage, key-value pair buffer
+                    // localStorage.setItem('a','789');
+                    localStorage.setItem('arr1',JSON.stringify(this.list));	//JSON.stringify() !!json object-> String!!
+                },
+                delList(index){
+                    //get index
+                    // console.log(index);
+                    // pop window delete or not??? 
+                    var isDel = window.confirm('Are you sure you want to delete this comment?');
+                    if(isDel){
+                        // find index number of data in the list array then delete it
+                        // -splice- delete data in the list- two par：delete from what index,  delete how many
+                        this.list.splice(index,1);
+                        localStorage.setItem('arr1',JSON.stringify(this.list));
+                    }
+                },
+                edit(){
+                    var this_ = this;
+                    setTimeout(()=>{
+                        localStorage.setItem('arr1',JSON.stringify(this_.list));
+                    })
+                }
+            },
+            // created vue will initiate after page is set up 
+            created(){
+                console.log('page set up!');
+                // localStorage.getItem	get local buffer
+                var slist1 = localStorage.getItem('arr1');
+                if(slist1 == null){
+                    this.list = [];
+                }else{
+                    this.list = JSON.parse(slist1);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

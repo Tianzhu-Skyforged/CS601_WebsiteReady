@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/Template.css">
+    <link rel="stylesheet" href="/css/test.css">
+    <title>Tianzhu_Hometown</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="main-head">Tianzhu's World</header>
+        <nav class="main-nav">
+            <ul>
+              <li><a href="/index.html">Home</a></li>
+              <li><a href="/P2_Hometown.html">Hometown</a></li>
+              <li><a href="/P3_Life_in_BC.html">Life_in_BC</a></li>
+              <li><a href="/P4_Movies.html">Movies</a></li>
+              <li><a href="/P5_Hobby.html">Hobby</a></li>
+              <li><a href="/P6_About_me.html">About me</a></li>
+            </ul>
+        </nav>
+    <main class="content">
+        <h1>My Hometown!</h1>
+
+        <p>
+        Click on the pictures to see more,    
+        <a href="https://www.sichuantravelguide.com/mianyang.html"> and click here to know more about Mianyang!</a>
+        </p>
+
+        
+        <div class="row">
+            <div class="column">
+              <img src="https://img.zcool.cn/community/0118a55f2bc83da80120a8215e65bc.jpg@1280w_1l_2o_100sh.jpg" alt="Dusk" style="width:100%" onclick="myFunction(this);">
+            </div>
+            <div class="column">
+              <img src="https://jobs.chinabriefcase.com/wp-content/uploads/2019/10/mianyang.jpg" alt="Riverside" style="width:100%" onclick="myFunction(this);">
+            </div>
+            <div class="column">
+              <img src="https://img.zcool.cn/community/013ed75f2bc845a801215aa0618407.jpg@1280w_1l_2o_100sh.jpg" alt="Bridge" style="width:100%" onclick="myFunction(this);">
+            </div>
+            <div class="column">
+              <img src="https://youimg1.c-ctrip.com/target/0103l120008ivymleCA87.jpg" alt="Temple" style="width:100%" onclick="myFunction(this);">
+            </div>
+          </div>
+        
+          
+          <div class="container">
+            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+            <img id="expandedImg" width="1000" height="600" class="center">
+            <div id="imgtext"></div>
+          </div>
+          
+          
+          <script>
+          function myFunction(imgs) {
+            var expandImg = document.getElementById("expandedImg");
+            var imgText = document.getElementById("imgtext");
+            expandImg.src = imgs.src;
+            imgText.innerHTML = imgs.alt;
+            expandImg.parentElement.style.display = "block";
+          }
+          </script>
+
+    </main>
+
+    <aside class="side">
+        <p>
+            Mianyang is located in the northwest of Sichuan Province on the middle and upper reaches of the Fujiang River. It neighbors Nanchong, Suining, Deyang 
+            and Aba Tibetan and Qiang Autonomous Prefecture within the province, and is bordered by Gansu Province to the north. It is about 131 kilometers (81 miles) 
+            from Chengdu, the capital of Sichuan. People could be familiar with Mianyang by a famous Chinese romantic poet Li Bai of the Tang Dynasty (618 - 907). 
+            There are various buildings, sculptures, and monument forests related to Li Bai in the Libai Monument Forest.
+        </p>
+
+        <p>
+            Visitors can go here to experience the strong Qiang folk customs and culture, look for the footprints of wild animals while enjoying the beautiful scenery in the natural reserve, 
+            shuttle through the streets and alleys to experience the local leisure and comfortable living atmosphere, and taste various delicious Sichuan cuisines.
+        </p>
+    </aside>
+
+    <div class="ad">
+        <p>
+            All my links:
+        </p>
+
+        <a href="https://steamcommunity.com/profiles/76561198103502478">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" alt="steam icon" style="width:42px;height:42px;">
+        </a>
+
+        <a href="https://in.linkedin.com/in/tianzhu-li-0881a2128">
+            <img src="https://freepngimg.com/thumb/linkedin/6-2-linkedin-transparent.png" alt="linkedin icon" style="width:42px;height:42px;">
+        </a>
+
+    </div>
+
+    
+
+    <footer class="main-footer">
+        <p>    Copyright &copy; 2022 Tianzhu Li. All Rights Reserved.</p>
+    </footer>
+    </div>
+    
+</body>
+</html>
