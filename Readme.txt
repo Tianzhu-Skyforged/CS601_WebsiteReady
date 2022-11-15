@@ -1,4 +1,12 @@
 **Tianzhu Li Bio Website**
+https://tianzhusworld.netlify.app
+
+Final:
+After week1's html build and week2's css build. Further features were added and polished:
+-In total of six pages that are carefully considered.
+-Used media quaries to fit different sizes of windows.
+-Used JS to achieve auto gallery, pic and resume viewer.
+-Used Vue to create comment sections and to do list.
 
 Week 2：
 
